@@ -1,25 +1,33 @@
 /* ===================================================
    CV — Carine Byande
-   Charte alignée sur carinebyande.levent-it.com
+   Layout exact de son CV original.
+   Bandeau navy : intact.
+   Tous les autres accents colorés : remplacés par notre or.
    =================================================== */
 
 :root {
   --surface: #FFFFFF;
   --bg-soft: #F4F2EC;
-  --ink: #1A1F2E;
-  --ink-soft: #3D4356;
-  --ink-mute: #5C6377;
+  --ink: #1A1F2E;          /* navy/ink — utilisé pour le bandeau de tête */
+  --ink-soft: #1C2526;     /* corps de texte (proche noir) */
+  --slate: #5C6377;        /* dates / lieux / contexte */
   --muted: #8A8E97;
   --line: #DCD8CB;
-  --gold: #B89968;
-  --gold-deep: #8E7548;
+  --gold: #B89968;         /* notre or principal (remplace son orange #C9952A) */
+  --gold-deep: #8E7548;    /* or profond pour titres */
+  --gold-soft: #D4BC8E;    /* or clair (remplace son #D4AF6A) */
+  --cream: #F5EFE0;        /* texte clair sur bandeau navy */
+  --cream-mute: #C8BFA7;   /* contacts sur bandeau */
   --serif: 'Cormorant Garamond', 'Garamond', serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 @page {
   size: A4;
-  margin: 11mm 14mm 12mm;
+  margin: 6mm 0;           /* marge sûre sur toutes les pages (impression) */
+}
+@page :first {
+  margin-top: 0;           /* page 1 : bandeau navy plein bord */
 }
 
 * { box-sizing: border-box; }
@@ -28,10 +36,10 @@ html, body {
   margin: 0;
   padding: 0;
   background: var(--surface);
-  color: var(--ink);
+  color: var(--ink-soft);
   font-family: var(--sans);
-  font-size: 8.5pt;
-  line-height: 1.4;
+  font-size: 9pt;
+  line-height: 1.45;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
@@ -40,355 +48,263 @@ html, body {
   body { background: #E8E5DD; padding: 24px 0; }
   .cv {
     width: 210mm;
-    padding: 11mm 14mm 12mm;
     margin: 0 auto;
     background: var(--surface);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   }
 }
 
-/* ============= TYPOGRAPHY ============= */
+/* ============= TITLE BAND (DARK NAVY — INTOUCHABLE) ============= */
+.head {
+  background: var(--ink);
+  color: #FFFFFF;
+  padding: 14mm 14mm 11mm;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 12mm;
+  align-items: end;
+}
 
-h1, h2, h3 {
+.head h1 {
   font-family: var(--serif);
   font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin: 0;
+  font-size: 30pt;
+  line-height: 1;
+  margin: 0 0 3pt;
+  letter-spacing: -0.005em;
+  color: #FFFFFF;
 }
-em { font-style: italic; font-weight: 500; }
-
-.eyebrow {
+.head h1 .last-name {
   font-family: var(--sans);
-  font-size: 7.2pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.head-role {
+  font-family: var(--sans);
   font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
+  font-size: 13pt;
+  letter-spacing: 0.04em;
+  color: var(--gold-soft);
   margin: 0 0 4pt;
 }
 
-/* ============= HEADER ============= */
-
-.header {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 10mm;
-  align-items: end;
-  padding-bottom: 3mm;
-  margin-bottom: 4mm;
-  border-bottom: 1.5pt solid var(--ink);
+.head-tag {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--cream-mute);
+  margin: 0;
+  letter-spacing: 0.02em;
 }
 
-.header h1 {
-  font-size: 28pt;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin: 0 0 7pt;
-  padding-bottom: 2pt;
-}
-.first { color: var(--ink); }
-.last { color: var(--gold-deep); font-style: italic; }
-
-.role {
+.head-right { display: grid; gap: 2pt; }
+.contact-line {
   font-family: var(--sans);
   font-size: 9pt;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin: 0 0 3pt;
-}
-
-.tagline {
-  font-family: var(--serif);
-  font-size: 10.5pt;
-  font-style: italic;
-  color: var(--ink-soft);
+  color: var(--cream-mute);
   margin: 0;
+  display: flex;
+  gap: 6pt;
+  align-items: center;
 }
-
-.header-meta {
-  display: grid;
-  gap: 0.8pt;
-  font-size: 7.8pt;
-}
-.meta-row {
-  display: grid;
-  grid-template-columns: 24mm 1fr;
-  gap: 3mm;
-}
-.meta-key {
-  font-family: var(--sans);
-  font-size: 7pt;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-}
-.meta-val {
-  color: var(--ink);
-  font-weight: 500;
-  font-size: 8pt;
-}
-
-/* ============= SECTIONS ============= */
-
-section + section { margin-top: 3.5mm; }
-
-h2 {
-  font-size: 11pt;
-  font-weight: 500;
-  margin: 0 0 1.8mm;
-  padding-bottom: 0.8mm;
-  border-bottom: 0.5pt solid var(--line);
-  color: var(--ink);
-}
-h2::before {
-  content: "";
+.contact-line .ico {
   display: inline-block;
-  width: 7pt;
-  height: 7pt;
-  background: var(--gold);
-  margin-right: 5pt;
-  vertical-align: 0.5pt;
-  transform: rotate(45deg);
+  width: 14pt;
+  font-size: 8.5pt;
 }
 
-/* ============= PROFIL ============= */
+/* ============= PROFIL DIRIGEANTE (FULL WIDTH) ============= */
+.profil {
+  padding: 6mm 14mm 4mm;
+  border-bottom: 0.5pt solid var(--line);
+}
+.profil h2 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin: 0 0 2.5mm;
+  padding-bottom: 1mm;
+  border-bottom: 1pt solid var(--gold);
+}
+.profil p {
+  margin: 0 0 1.5mm;
+  font-size: 9.2pt;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.profil p:last-child { margin-bottom: 0; }
 
-.profil .lead {
-  font-family: var(--serif);
-  font-size: 10.5pt;
+/* ============= MAIN BODY (2 COLS) ============= */
+.body {
+  display: grid;
+  grid-template-columns: 1.85fr 1fr;
+  gap: 8mm;
+  padding: 4mm 14mm 4mm;
+  align-items: stretch;       /* sidebar suit la hauteur de la col gauche */
+}
+
+/* ============= TYPOGRAPHY (sections) ============= */
+.experience h2,
+.side-block h2 {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin: 0 0 2.5mm;
+  padding-bottom: 1mm;
+  border-bottom: 1pt solid var(--gold);
+}
+.experience h2 { font-size: 11pt; }
+.side-block h2 { font-size: 9.5pt; }
+
+/* ============= EXPERIENCE ============= */
+.role {
+  margin: 0 0 3mm;
+  page-break-inside: avoid;
+}
+.role:last-child { margin-bottom: 0; }
+
+.role-period {
+  font-family: var(--sans);
+  font-size: 8pt;
   font-weight: 500;
+  color: var(--slate);
+  margin: 0 0 0.8mm;
+  letter-spacing: 0.02em;
+}
+
+.role h3 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 10.2pt;
   color: var(--ink);
+  margin: 0 0 1mm;
+  line-height: 1.25;
+}
+
+.role-context {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--slate);
   margin: 0 0 1.5mm;
   line-height: 1.4;
 }
-.profil p {
-  margin: 0 0 1mm;
-  color: var(--ink-soft);
-  font-size: 8.5pt;
-  line-height: 1.45;
-}
 
-/* ============= EXPERIENCE ============= */
-
-.experience .role {
-  display: grid;
-  grid-template-columns: 34mm 1fr;
-  gap: 5mm;
-  margin: 0;
-  padding: 1.8mm 0;
-  border-top: 0.4pt solid var(--line);
-  page-break-inside: avoid;
-}
-.experience .role:first-of-type { border-top: 0; padding-top: 0.5mm; }
-
-.role-meta { display: flex; flex-direction: column; gap: 0.5pt; }
-
-.period {
-  font-family: var(--sans);
-  font-size: 7pt;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  margin: 0;
-}
-.company {
-  font-family: var(--serif);
-  font-size: 10pt;
-  font-weight: 500;
-  margin: 0.5pt 0 0;
-  color: var(--ink);
-  line-height: 1.15;
-}
-.place {
-  font-size: 7.8pt;
-  color: var(--muted);
-  margin: 0;
-}
-
-.role-body h3 {
-  font-size: 9.8pt;
-  font-weight: 500;
-  margin: 0 0 0.5mm;
-  color: var(--ink);
-  line-height: 1.2;
-}
-.scope {
-  font-family: var(--sans);
-  font-size: 7.5pt;
-  font-style: italic;
-  color: var(--ink-mute);
-  margin: 0 0 1mm;
-}
-.role-body ul {
+.role ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 1mm;
+  margin: 0 0 1.5mm;
 }
-.role-body li {
+.role li {
   position: relative;
-  padding-left: 3.5mm;
-  font-size: 8.3pt;
-  color: var(--ink-soft);
-  margin-bottom: 0.2mm;
-  line-height: 1.4;
-}
-.role-body li::before {
-  content: "—";
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-weight: 700;
-}
-
-.impact {
-  font-family: var(--serif);
+  padding-left: 5mm;
   font-size: 9pt;
-  font-style: italic;
-  color: var(--ink);
-  margin: 0.8mm 0 0;
-  padding: 0.8mm 2.5mm;
-  background: var(--bg-soft);
-  border-left: 1.5pt solid var(--gold);
-  line-height: 1.35;
-}
-.impact strong {
-  display: inline-block;
-  font-style: normal;
-  font-family: var(--sans);
-  font-size: 6.8pt;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  margin-right: 4pt;
-  vertical-align: 0.5pt;
-}
-
-.role--compact .role-body p {
-  margin: 0;
-  font-size: 8.3pt;
   color: var(--ink-soft);
+  margin-bottom: 0.5mm;
   line-height: 1.4;
 }
-.role--compact .role-body p.impact { margin-top: 0.8mm; }
-
-/* ============= TWO-COL BLOCKS ============= */
-
-.two-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm 6mm;
-  align-items: start;
-  margin-top: 4mm;
+.role li::before {
+  content: "•";
+  position: absolute;
+  left: 1mm;
+  top: -0.3mm;
+  color: var(--ink-soft);
+  font-size: 11pt;
+}
+.role li.star { color: var(--gold-deep); font-weight: 500; }
+.role li.star::before {
+  content: "★";
+  color: var(--gold);
+  font-size: 8.5pt;
+  top: 0.2mm;
 }
 
-.block {
-  margin: 0;
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-.block h2 { font-size: 10pt; margin-bottom: 1.3mm; }
-
-/* Bottom 2-col : Certifications + International, aligned */
-.bottom-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 6mm;
-  align-items: start;
-  margin-top: 4mm;
+.role-impact {
+  font-family: var(--sans);
+  font-size: 8.8pt;
+  font-weight: 600;
+  color: var(--gold-deep);
+  margin: 1mm 0 0;
+  padding: 1.2mm 2.5mm;
+  background: rgba(184, 153, 104, 0.12);
+  border-left: 1.5pt solid var(--gold);
+  font-style: italic;
 }
 
-.pills {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.role--compact ul { margin-bottom: 0; }
+
+/* ============= SIDEBAR ============= */
+.sidebar {
   display: flex;
   flex-direction: column;
-  gap: 0.8mm;
-}
-.pills li {
-  font-size: 8pt;
-  font-weight: 500;
-  padding: 0.7mm 2.5mm;
-  background: var(--bg-soft);
-  border-left: 1.5pt solid var(--gold);
-  color: var(--ink-soft);
-  line-height: 1.3;
+  gap: 4mm;
+  height: 100%;                     /* prend toute la hauteur dispo */
 }
 
-.techlist { margin: 0; display: grid; gap: 0.6mm; }
-.techlist > div {
-  display: grid;
-  grid-template-columns: 18mm 1fr;
-  gap: 2mm;
-  padding-bottom: 0.5mm;
-  border-bottom: 0.4pt dotted var(--line);
-}
-.techlist > div:last-child { border-bottom: 0; }
-.techlist dt {
-  font-family: var(--sans);
-  font-size: 7pt;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-}
-.techlist dd { margin: 0; font-size: 8.2pt; color: var(--ink); }
+.side-block { page-break-inside: avoid; }
 
-.block-line {
-  margin: 0 0 0.4mm;
-  font-size: 8.2pt;
-  color: var(--ink-soft);
-}
-.block-line strong {
-  color: var(--ink);
-  font-weight: 600;
-  display: inline-block;
-  min-width: 22mm;
-}
+/* Distribution : chaque bloc reçoit une part de l'espace libre */
+.side-block + .side-block { margin-top: auto; }
 
-/* ============= KEY-VALUE LIST (Certifications + International) ============= */
-
-.kv-list {
+.diamond-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.kv-list li {
+.diamond-list li {
+  position: relative;
+  padding-left: 4mm;
+  font-size: 8.4pt;
+  color: var(--ink-soft);
+  margin-bottom: 0.6mm;
+  line-height: 1.45;
+}
+.diamond-list li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.4mm;
+  color: var(--gold);
+  font-size: 7pt;
+}
+
+.kv {
+  margin: 0;
+  display: grid;
+  gap: 0.6mm;
+}
+.kv > div {
   display: grid;
   grid-template-columns: 22mm 1fr;
-  gap: 2.5mm;
-  padding: 1mm 0;
-  border-top: 0.4pt solid var(--line);
-  font-size: 8.5pt;
-  align-items: center;
+  gap: 2mm;
+  padding: 0.4mm 0;
+  border-bottom: 0.4pt dotted var(--line);
+  font-size: 8.4pt;
 }
-.kv-list li:first-child { border-top: 0; }
-.kv-key {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 10pt;
-  font-style: italic;
+.kv > div:last-child { border-bottom: 0; }
+.kv dt {
+  font-family: var(--sans);
+  font-weight: 600;
   color: var(--gold-deep);
+  letter-spacing: 0.02em;
 }
-.kv-val { color: var(--ink); font-weight: 500; }
+.kv dd { margin: 0; color: var(--ink-soft); }
 
-/* ============= FOOTER ============= */
-
-.footer {
-  margin-top: 4mm;
-  padding-top: 1.5mm;
-  border-top: 0.4pt solid var(--line);
-  font-size: 6.8pt;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-transform: uppercase;
-  text-align: center;
+/* ============= SOFT SKILLS BLOCK (with image) ============= */
+.side-block--soft { text-align: center; }
+.soft-img {
+  display: block;
+  width: 100%;
+  max-width: 60mm;
+  height: auto;
+  margin: 1mm auto 0;
 }
-.footer p { margin: 0; }
-.footer span { color: var(--gold-deep); font-weight: 600; }
+
+/* ============= PRINT FIXES ============= */
+@media print {
+  body { background: var(--surface); }
+  .cv { width: 210mm; margin: 0; box-shadow: none; }
+}
