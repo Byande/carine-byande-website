@@ -90,14 +90,13 @@ h1 em, h2 em, h3 em {
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--gold);
-}
-.btn-outline:hover {
   background: var(--gold);
   color: var(--bg);
   border-color: var(--gold);
+}
+.btn-outline:hover {
+  background: var(--gold-deep);
+  border-color: var(--gold-deep);
   transform: translateY(-1px);
 }
 
